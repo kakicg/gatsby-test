@@ -132,6 +132,13 @@ export default ({ data }) => (
               </li>
             </ul>
           </div>
+          <div className="back">
+            <Img
+              fluid={data.pattern.childImageSharp.fluid}
+              alt=""
+              style={{ height: "100%" }}
+            />
+          </div>
         </footer>
       </div>
 )
@@ -169,6 +176,13 @@ export const query = graphql`
     berry: file(relativePath: {eq: "berry.jpg"}) {
       childImageSharp {
         fluid(maxWidth: 320) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }   
+    }   
+    pattern: file(relativePath: {eq: "pattern.jpg"}) {
+      childImageSharp {
+        fluid(maxWidth: 1920, quality: 90) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }   
